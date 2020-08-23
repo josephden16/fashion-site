@@ -1,6 +1,7 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
+import Catalog from  '../views/Catalog.vue'
 
 Vue.use(VueRouter)
 
@@ -25,6 +26,12 @@ const routes = [
     name: 'Account',
     meta: { title: 'Mariapinto | Account' },
     component: () => import('../views/Account.vue')
+  },
+  {
+    path: '/catalog/:product_name',
+    name: 'Catalog',
+    meta: { title: 'Mariapinto | Catalog' },
+    component: Catalog
   }
 ]
 

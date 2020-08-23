@@ -16,3 +16,4 @@ new Vue({
 // TODO: set up a mock api server to receive json data
 // TODO: work on the links on the footer and header
 // TODO: work on Error Pages when done
+// TODO: work on description and haute_couture page

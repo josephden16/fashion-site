@@ -2,7 +2,14 @@
   <header class="header">
     <div class="header__main">
       <div class="header__main__menu">
-        <img class="menu" src="../assets/icons8-menu.svg" alt="menu" />
+        <img
+          @click="openNav"
+          v-if="!navOpen"
+          class="menu"
+          src="../assets/icons8-menu.svg"
+          alt="menu"
+        />
+        <img @click="openNav" v-else src="../assets/cancel.svg" class="menu" alt="cancel" />
       </div>
       <div class="header__main__logo">
         <router-link to="/">
@@ -13,7 +20,7 @@
         <router-link to="/">
           <img src="../assets/icons8-search.svg" id="search" alt="search" />
         </router-link>
-        <router-link to="./account">
+        <router-link to="/account">
           <img src="../assets/profile-icon-png.png" width="50px" alt="profile" />
         </router-link>
         <a href="#">
@@ -27,28 +34,28 @@
     <nav class="header__nav">
       <ul>
         <li>
-          <a href="./haute_couture.html">HAUTE COUTURE</a>
+          <router-link to="/haute_couture">HAUTE COUTURE</router-link>
         </li>
         <li>
-          <a href="./fashion.html">FASHION</a>
+          <router-link to="/fashion">FASHION</router-link>
         </li>
         <li>
-          <a href="./watches-catalog.html">WATCHES</a>
+          <router-link to="/catalog/watches">WATCHES</router-link>
         </li>
         <li>
-          <a href="./jewelry-catalog.html">FINE JEWELRY</a>
+          <router-link to="/catalog/jewelry">FINE JEWELRY</router-link>
         </li>
         <li>
-          <a href="./eyewear-catalog.html">EYE WEAR</a>
+          <router-link to="/catalog/eyewear">EYE WEAR</router-link>
         </li>
         <li>
-          <a href="./fragrance-catalog.html">FRAGRANCE</a>
+          <router-link to="/catalog/fragrance">FRAGRANCE</router-link>
         </li>
         <li>
-          <a href="./makeup-catalog.html">MAKEUP</a>
+          <router-link to="/catalog/make-up">MAKEUP</router-link>
         </li>
         <li>
-          <a href="./skincare-cataolg.html">SKINCARE</a>
+          <router-link to="/catalog/skincare">SKINCARE</router-link>
         </li>
       </ul>
     </nav>
@@ -56,11 +63,41 @@
 </template>
 
 <script>
-export default {};
+export default {
+  data() {
+    return {
+      navOpen: false,
+    };
+  },
+  methods: {
+    openNav() {
+      let nav = document.querySelector(".header__nav");
+      if (this.navOpen) {
+        this.navOpen = false;
+        nav.style.display = "none";
+      } else {
+        this.navOpen = true;
+        nav.style.display = "block";
+      }
+    },
+  },
+  computed: {
+    className() {
+      if (this.navOpen) {
+        return "header__nav open";
+      } else {
+        return "header__nav";
+      }
+    },
+  },
+};
 </script>
 
 <style lang="scss">
 // header
+.open {
+  display: block;
+}
 .header {
   .menu {
     display: none;

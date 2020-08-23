@@ -84,16 +84,17 @@ export default {
     };
   },
   methods: {
-      selectTab(tab) {
-          this.selectedTab = tab;
-      } 
-  }
+    selectTab(tab) {
+      this.selectedTab = tab;
+    },
+  },
 };
 </script>
 
 <style lang="scss">
 .account {
   text-align: center;
+  margin-bottom: 95px;
   h4 {
     font-size: 22px;
   }
@@ -103,7 +104,6 @@ export default {
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
-
     &__header {
       &-links {
         display: inline-block;

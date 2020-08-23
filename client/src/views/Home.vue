@@ -24,7 +24,7 @@ export default {
     Header,
     Footer,
     ProductSection,
-    Info
+    Info,
   },
   data() {
     return {
@@ -54,8 +54,8 @@ export default {
         lead: "Sun Shades",
         url: "/catalog/eyewear",
         content: "",
-        className: "product-section eyewear"
-      }
+        className: "product-section eyewear",
+      },
     };
   },
 };
@@ -94,13 +94,13 @@ export default {
   background-image: url("https://res.cloudinary.com/tega/image/upload/v1597064440/fashion-site/backgrounds/fashion_qfwm8b_fj6se2.jpg");
 }
 .watches {
-  background-image: url("https://res.cloudinary.com/tega/image/upload/v1597064521/fashion-site/backgrounds/watches_bwc82l.jpg")
+  background-image: url("https://res.cloudinary.com/tega/image/upload/v1597064521/fashion-site/backgrounds/watches_bwc82l.jpg");
 }
 .jewelry {
   background-image: url("https://res.cloudinary.com/tega/image/upload/v1597064587/fashion-site/backgrounds/jewelry_bzpwtz.jpg");
 }
 .eyewear {
-  background-image: url("https://res.cloudinary.com/tega/image/upload/v1597145342/fashion-site/backgrounds/maxresdefault_icj4xn.jpg")
+  background-image: url("https://res.cloudinary.com/tega/image/upload/v1597145342/fashion-site/backgrounds/maxresdefault_icj4xn.jpg");
 }
 .btn {
   width: 170px;
@@ -132,5 +132,39 @@ export default {
 
 .content {
   margin-bottom: 30px;
+}
+
+@media screen and (max-width: 400px) {
+  .product-section__content {
+    .content {
+      width: 80%;
+      margin: 0px auto 40px auto;
+      font-weight: lighter;
+    }
+  }
+  .product-section {
+    height: 500px;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: cover;
+    border-left: none;
+    border-right: none;
+    flex-flow: column nowrap;
+    justify-content: center;
+    border-bottom: 1px solid #b4b4b4;
+    text-align: center;
+    &__content {
+      color: #fff;
+      display: flex;
+      text-align: center;
+      p {
+        font-size: 16px;
+      }
+      .lead {
+        margin-bottom: 50px;
+        font-size: 1.8rem;
+      }
+    }
+  }
 }
 </style>
