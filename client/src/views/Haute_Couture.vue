@@ -1,10 +1,10 @@
 <template>
-  <div class="fashion-page">
+<div class="haute_couture">
     <Header />
-    <ProductSection :dataObject="boutiques" />
-    <ProductSection :dataObject="newCollection" />
+    <ProductSection :dataObject="springSummer"  />
+    <ProductSection :dataObject="fallWinter" />
     <Footer />
-  </div>
+</div>
 </template>
 
 <script>
@@ -19,18 +19,17 @@ export default {
   },
   data() {
     return {
-      boutiques: {
-        title: "Metiers d'Art 2017/2018",
-        lead: "In Boutiques",
+      fallWinter: {
+        title: "FALL-WINTER 2018",
+        lead: "HAUTE COUTURE SHOW",
         url: "/catalog/fashion",
-        className: "product-section boutiques",
+        className: "product-section fall-winter",
       },
-      newCollection: {
-        title: "New Collection",
-        head: "Coco Neige",
-        lead: "Soon in Boutiques",
+      springSummer: {
+        title: "SPRING-SUMMER 2018",
+        lead: "HAUTE COUTURE SHOW",
         url: "/catalog/fashion",
-        className: "product-section new-collection",
+        className: "product-section spring-summer",
       },
     };
   },
@@ -38,7 +37,6 @@ export default {
 </script>
 
 <style lang="scss">
-// fashion page
 .product-section {
   height: 650px;
   background-position: center;
@@ -67,25 +65,22 @@ export default {
     }
   }
 }
-.boutiques {
-  background-image: url("https://res.cloudinary.com/tega/image/upload/v1597074615/fashion-site/backgrounds/boutique_dtydbg.jpg");
-  background-position: unset;
-  background-size: cover;
-  background-repeat: no-repeat;
-}
-
-.new-collection {
-  background-image: url("https://res.cloudinary.com/tega/image/upload/v1597074685/fashion-site/backgrounds/new-collection_qvuerk.jpg");
+.spring-summer {
+  background-image: url("https://res.cloudinary.com/tega/image/upload/v1597223988/fashion-site/backgrounds/summer-spring_c2cxdu.jpg");
   .product-section__content {
-    .head {
-      color: #fff;
-      font-weight: lighter;
-      font-size: 2rem;
-      margin: 0;
-    }
+    color: black;
     .lead {
       font-weight: lighter;
-      margin-bottom: 50px;
+    }
+  }
+}
+
+.fall-winter {
+  background-image: url("https://res.cloudinary.com/tega/image/upload/v1597074678/fashion-site/backgrounds/fall-winter_pkudfp.jpg");
+  .product-section__content {
+    color: #fff;
+    .lead {
+      font-weight: lighter;
     }
   }
 }

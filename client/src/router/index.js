@@ -1,7 +1,6 @@
 import Vue from 'vue'
 import VueRouter from 'vue-router'
 import Home from '../views/Home.vue'
-import Catalog from  '../views/Catalog.vue'
 
 Vue.use(VueRouter)
 
@@ -11,6 +10,15 @@ const routes = [
     name: 'Home',
     component: Home,
     meta: { title: 'Mariapinto | Home' }
+  },
+  // redirect when the user visits the following links
+  {
+    path: '/home',
+    redirect: '/'
+  },
+  {
+    path: '/index',
+    redirect: '/'
   },
   {
     path: '/about',
@@ -31,7 +39,30 @@ const routes = [
     path: '/catalog/:product_name',
     name: 'Catalog',
     meta: { title: 'Mariapinto | Catalog' },
-    component: Catalog
+    component: () => import('../views/Catalog.vue')
+  },
+  {
+    path: '/fashion',
+    name: 'Fashion',
+    meta: { title: 'Mariapinto | Fashion' },
+    component: () => import('../views/Fashion.vue')
+  },
+  {
+    path: '/haute_couture',
+    name: 'Haute Couture',
+    meta: { title: 'Mariapinto | Haute Couture' },
+    component: () => import('../views/Haute_Couture.vue')
+  },
+  {
+    path: '/description',
+    name: 'Description',
+    meta: { title: 'Mariapinto | Description' },
+    component: () => import('../views/Description.vue')
+  },
+  {
+    path: '*',
+    name: 'Error',
+    component: () => import('../views/Error.vue')
   }
 ]
 

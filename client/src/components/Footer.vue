@@ -1,32 +1,37 @@
 <template>
   <footer class="footer">
     <div class="site-logo">
-      <img src="../assets/logo3.svg" alt="site logo" />
+      <router-link to="/">
+        <img src="../assets/logo3.svg" alt="site logo" />
+      </router-link>
     </div>
     <div class="footer__container">
       <div class="footer__container__contents">
-        <div class="footer__container__contents-head">Explore Chanel.com</div>
+        <div class="footer__container__contents-head">Explore Mariapinto.com</div>
         <ul>
           <li>
-            <a href="./fashion-catalog.html">Fashion</a>
+            <router-link to="/fashion">Fashion</router-link>
           </li>
           <li>
-            <a href="./watches-catalog.html">Watches</a>
+            <router-link to="/catalog/watches">Watches</router-link>
           </li>
           <li>
-            <a href="./jewelry-catalog.html">Fine Jewelry</a>
+            <router-link to="/catalog/jewelry">Fine Jewelry</router-link>
           </li>
           <li>
-            <a href="./eyewear-catalog.html">Eye Wear</a>
+            <router-link to="/catalog/eyewear">Eye Wear</router-link>
           </li>
           <li>
-            <a href="./fragrance-catalog.html">Fragrance</a>
+            <router-link to="/catalog/fragrance">Fragrance</router-link>
           </li>
           <li>
-            <a href="./makeup-catalog.html">Makeup</a>
+            <router-link to="/catalog/make-up">Makeup</router-link>
           </li>
           <li>
-            <a href="./skincare-cataolg.html">Skincare</a>
+            <router-link to="/catalog/skincare">Skincare</router-link>
+          </li>
+          <li>
+            <router-link to="/description">Description</router-link>
           </li>
         </ul>
       </div>
@@ -59,16 +64,16 @@
         </ul>
       </div>
       <div class="footer__container__contents">
-        <div class="footer__container__contents-head">THE HOUSE OF CHANEL</div>
+        <div class="footer__container__contents-head">THE HOUSE OF MARAIPINTO</div>
         <ul>
           <li>
-            <a href="#">Inside Chanel</a>
+            <a href="#">Inside Mariapinto</a>
           </li>
           <li>
             <a href="#">Careers</a>
           </li>
           <li>
-            <a href="#">Foundation Chanel</a>
+            <a href="#">Foundation Mariapinto</a>
           </li>
           <li>
             <a href="#">Legal</a>
