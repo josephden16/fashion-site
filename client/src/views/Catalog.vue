@@ -1,8 +1,8 @@
 <template>
   <div class="catalog">
     <Header />
+    <div v-if="loading === true" id="loading"></div>
     <div class="item-container">
-      <div v-if="loading === true" id="loading"></div>
       <div class="items">
         <div class="item" v-for="(product, index) in products" :key="index">
           <div class="item__img">
@@ -66,7 +66,7 @@ export default {
   position: absolute;
   display: flex;
   flex-flow: column nowrap;
-  // top: 0;
+  top: 0;
   left: 0;
   width: 100%;
   height: 100%;
