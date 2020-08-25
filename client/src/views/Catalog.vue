@@ -1,7 +1,7 @@
 <template>
   <div class="catalog">
-    <Header />
     <div v-if="loading === true" id="loading"></div>
+    <Header />
     <div class="item-container">
       <div class="items">
         <div class="item" v-for="(product, index) in products" :key="index">

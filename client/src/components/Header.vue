@@ -156,7 +156,7 @@ export default {
     }
   }
 }
-
+// cart icon
 .cart {
   position: absolute;
   right: 18px;
