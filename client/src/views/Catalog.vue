@@ -1,8 +1,8 @@
 <template>
-  <div>
-    <div v-if="loading === true" id="loading"></div>
+  <div class="catalog">
     <Header />
     <div class="item-container">
+      <div v-if="loading === true" id="loading"></div>
       <div class="items">
         <div class="item" v-for="(product, index) in products" :key="index">
           <div class="item__img">
@@ -34,15 +34,25 @@ export default {
     return {
       products: null,
       failedToFetch: false,
-      loading: false,
+      loading: true,
       category: this.$route.params.product_name,
-      currency: "$"
+      currency: "$",
     };
   },
   mounted() {
     const products = require("../products");
     if (products) {
+      setTimeout(() => {
+        this.products = products[this.category];
+        this.loading = false;
+      }, 1 * 1000);
+    } else {
+      setTimeout(() => {
+        this.loading = false;
+      }, 8 * 1000);
+      const products = require("../products");
       this.products = products[this.category];
+      this.loading = false;
     }
   },
 };
@@ -51,16 +61,19 @@ export default {
 <style lang="scss">
 // loading gif
 #loading {
-  background: url("https://res.cloudinary.com/tega/image/upload/v1598212894/fashion-site/icons/spinner_ckm5lk.gif")
+  background: url("https://res.cloudinary.com/tega/image/upload/v1598331654/fashion-site/icons/spinner_v6zkca.gif")
     no-repeat center center;
   position: absolute;
-  top: 0;
+  display: flex;
+  flex-flow: column nowrap;
+  // top: 0;
   left: 0;
-  width: 100vw;
-  height: 100vh;
+  width: 100%;
+  height: 100%;
   z-index: 9999;
   background-color: #fff;
 }
+
 // catalog pages
 .item-container {
   margin: 60px 100px;

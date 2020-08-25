@@ -16,20 +16,9 @@
           <img src="../assets/logo3.svg" alt="site logo" id="logo" />
         </router-link>
       </div>
-      <div class="header__main__accessibles">
-        <router-link to="/">
-          <img src="../assets/icons8-search.svg" id="search" alt="search" />
-        </router-link>
-        <router-link to="/account">
-          <img src="../assets/profile-icon-png.png" width="50px" alt="profile" />
-        </router-link>
-        <a href="#">
-          <img src="../assets/icons8-star-32.png" id="star" alt="star" />
-        </a>
-        <a href="#">
-          <img src="../assets/icons8-bookmark.svg" alt="bookmark" />
-        </a>
-      </div>
+      <a href="#" class="cart">
+        <img src="../assets/cart.svg" alt="cart" />
+      </a>
     </div>
     <nav class="header__nav">
       <ul>
@@ -58,6 +47,20 @@
           <router-link to="/catalog/skincare">SKINCARE</router-link>
         </li>
       </ul>
+      <div class="header__nav__accessibles">
+        <router-link to="/">
+          <img src="../assets/icons8-search.svg" id="search" alt="search" />
+        </router-link>
+        <router-link to="/account">
+          <img src="../assets/profile-icon-png.png" width="50px" alt="profile" />
+        </router-link>
+        <a href="#">
+          <img src="../assets/icons8-star-32.png" id="star" alt="star" />
+        </a>
+        <a href="#">
+          <img src="../assets/icons8-bookmark.svg" alt="bookmark" />
+        </a>
+      </div>
     </nav>
   </header>
 </template>
@@ -113,10 +116,16 @@ export default {
         position: relative;
       }
     }
+  }
+
+  &__nav {
+    border-bottom: 1px solid #b4b4b4;
+    padding: 18px 150px;
+    margin-top: 30px;
     &__accessibles {
       position: absolute;
-      right: 10px;
-      margin-top: 20px;
+      right: 50px;
+      top: 20px;
       a {
         text-decoration: none;
         margin: 30px 12px;
@@ -126,12 +135,6 @@ export default {
         }
       }
     }
-  }
-
-  &__nav {
-    border-bottom: 1px solid #b4b4b4;
-    padding: 18px 150px;
-    margin-top: 30px;
     ul {
       padding: 0;
       margin: 0;
@@ -154,6 +157,14 @@ export default {
   }
 }
 
+.cart {
+  position: absolute;
+  right: 18px;
+  top: 18px;
+  img {
+    width: 30px;
+  }
+}
 @media screen and (max-width: 1150px) {
   .header {
     padding-top: 25px;
@@ -202,6 +213,21 @@ export default {
       margin-top: 30px;
       display: none;
       transition: display 500ms ease-out;
+      text-align: center;
+      &__accessibles {
+        position: relative;
+        right: 0;
+        top: 20px;
+        margin-bottom: 15px;
+        a {
+          text-decoration: none;
+          margin: 30px 12px;
+          img {
+            width: 25px;
+            cursor: pointer;
+          }
+        }
+      }
       ul {
         padding: 0;
         margin: 0;
