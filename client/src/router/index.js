@@ -62,6 +62,7 @@ const routes = [
   {
     path: '*',
     name: 'Error',
+    meta: { title: 'Page Not Found' },
     component: () => import('../views/Error.vue')
   }
 ]
