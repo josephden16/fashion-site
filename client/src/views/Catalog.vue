@@ -1,34 +1,39 @@
 <template>
   <div class="catalog">
     <div v-if="loading === true" id="loading"></div>
-    <Header />
-    <div class="item-container">
-      <div class="items">
-        <div class="item" v-for="(product, index) in products" :key="index">
-          <div class="item__img">
-            <img :src="product.url" :alt="product.product_name" />
+    <Error v-if="error === true" />
+    <div v-else>
+      <Header />
+      <div class="item-container">
+        <div class="items">
+          <div class="item" v-for="(product, index) in products" :key="index">
+            <div class="item__img">
+              <img :src="product.url" :alt="product.product_name" />
+            </div>
+            <div class="item__info">
+              <p class="item__info__name">{{ product.product_name }}</p>
+              <p class="item__info__price">{{ currency + product.price }}</p>
+            </div>
+            <form action="#" class="item__buy">
+              <input type="submit" value="ADD TO CART" class="buy" />
+            </form>
           </div>
-          <div class="item__info">
-            <p class="item__info__name">{{ product.product_name }}</p>
-            <p class="item__info__price">{{ currency + product.price }}</p>
-          </div>
-          <form action="#" class="item__buy">
-            <input type="submit" value="ADD TO CART" class="buy" />
-          </form>
         </div>
       </div>
+      <Footer />
     </div>
-    <Footer />
   </div>
 </template>
 
 <script>
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
+import Error from "@/views/Error.vue";
 export default {
   components: {
     Header,
     Footer,
+    Error,
   },
   data() {
     return {
@@ -36,23 +41,30 @@ export default {
       failedToFetch: false,
       loading: true,
       category: this.$route.params.product_name,
+      categories: [
+        "fashion",
+        "skincare",
+        "fragrance",
+        "make-up",
+        "watches",
+        "jewelry",
+        "eyewear",
+      ],
       currency: "$",
+      error: false,
     };
   },
   mounted() {
+    this.error = !this.categories.includes(this.category);
+    if (this.error) {
+      document.title = "Page Not Found";
+    }
     const products = require("../products");
     if (products) {
       setTimeout(() => {
         this.products = products[this.category];
         this.loading = false;
       }, 1 * 1000);
-    } else {
-      setTimeout(() => {
-        this.loading = false;
-      }, 8 * 1000);
-      const products = require("../products");
-      this.products = products[this.category];
-      this.loading = false;
     }
   },
 };
@@ -99,6 +111,7 @@ export default {
     img {
       width: 220px;
       height: 250px;
+      font-size: 14px;
     }
   }
 

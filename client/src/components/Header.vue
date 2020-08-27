@@ -23,28 +23,52 @@
     <nav class="header__nav">
       <ul>
         <li>
-          <router-link to="/haute_couture">HAUTE COUTURE</router-link>
+          <router-link
+            :class="{active: $route.name === 'Haute Couture'}"
+            to="/haute_couture"
+          >HAUTE COUTURE</router-link>
         </li>
         <li>
-          <router-link to="/fashion">FASHION</router-link>
+          <router-link
+            :class="{active: $route.name === 'Fashion' | $route.params.product_name === 'fashion'}"
+            to="/fashion"
+          >FASHION</router-link>
         </li>
         <li>
-          <router-link to="/catalog/watches">WATCHES</router-link>
+          <router-link
+            :class="{active: $route.params.product_name==='watches'}"
+            to="/catalog/watches"
+          >WATCHES</router-link>
         </li>
         <li>
-          <router-link to="/catalog/jewelry">FINE JEWELRY</router-link>
+          <router-link
+            :class="{active: $route.params.product_name==='jewelry'}"
+            to="/catalog/jewelry"
+          >FINE JEWELRY</router-link>
         </li>
         <li>
-          <router-link to="/catalog/eyewear">EYE WEAR</router-link>
+          <router-link
+            :class="{active: $route.params.product_name==='eyewear'}"
+            to="/catalog/eyewear"
+          >EYE WEAR</router-link>
         </li>
         <li>
-          <router-link to="/catalog/fragrance">FRAGRANCE</router-link>
+          <router-link
+            :class="{active: $route.params.product_name==='fragrance'}"
+            to="/catalog/fragrance"
+          >FRAGRANCE</router-link>
         </li>
         <li>
-          <router-link to="/catalog/make-up">MAKEUP</router-link>
+          <router-link
+            :class="{active: $route.params.product_name==='make-up'}"
+            to="/catalog/make-up"
+          >MAKEUP</router-link>
         </li>
         <li>
-          <router-link to="/catalog/skincare">SKINCARE</router-link>
+          <router-link
+            :class="{active: $route.params.product_name==='skincare'}"
+            to="/catalog/skincare"
+          >SKINCARE</router-link>
         </li>
       </ul>
       <div class="header__nav__accessibles">
@@ -155,6 +179,9 @@ export default {
       }
     }
   }
+}
+.active {
+  border-bottom: 4px solid #1b1b1b;
 }
 // cart icon
 .cart {
