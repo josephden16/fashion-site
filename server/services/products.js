@@ -1,5 +1,5 @@
 const mongoose = require('mongoose');
-mongoose.connect('mongodb+srv://bishop:bishop@cluster0.l1oed.mongodb.net/', {dbName: 'mariapinto', useNewUrlParser: true, useUnifiedTopology: true})
+// mongoose.connect(enter your server connection details)
 
 
 const productSchema = new mongoose.Schema({
