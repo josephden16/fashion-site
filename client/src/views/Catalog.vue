@@ -27,20 +27,20 @@
 </template>
 
 <script>
-// import axios from "axios";
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
 import Error from "@/components/Error.vue";
 export default {
   mounted() {
+    this.loading = true;
     let category = this.$route.params.category;
     let url = `https://fashion-site-server.waynejr.repl.co/${category}`;
     fetch(url)
       .then((res) => res.json())
       .then((jsonData) => this.getProducts(jsonData))
-      .catch((err) =>{ 
-        alert(err)
+      .catch(() =>{ 
         this.loading = false;
+        this.failedToFetch = true;
       });
   },
   components: {
@@ -54,16 +54,7 @@ export default {
       failedToFetch: false,
       errorMsg: "",
       category: null,
-      loading: true,
-      categories: [
-        "fashion",
-        "skincare",
-        "fragrance",
-        "make-up",
-        "watches",
-        "jewelry",
-        "eyewear",
-      ],
+      loading: false,
       currency: "$",
     };
   },
@@ -116,6 +107,7 @@ export default {
   &:hover {
     box-shadow: 1px 44px 28px 0px rgba(0, 0, 0, 0.05),
       -3px -4px 28px 0px rgba(0, 0, 0, 0.05);
+    cursor: pointer;
   }
   &__img {
     text-align: center;

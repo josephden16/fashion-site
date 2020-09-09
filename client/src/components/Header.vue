@@ -30,43 +30,43 @@
         </li>
         <li>
           <router-link
-            :class="{active: $route.name === 'Fashion' | $route.params.product_name === 'fashion'}"
+            :class="{active: $route.name === 'Fashion' | $route.params.category === 'fashion'}"
             to="/fashion"
           >FASHION</router-link>
         </li>
         <li>
           <router-link
-            :class="{active: $route.params.product_name==='watches'}"
+            :class="{active: $route.params.category==='watches'}"
             to="/catalog/watches"
           >WATCHES</router-link>
         </li>
         <li>
           <router-link
-            :class="{active: $route.params.product_name==='jewelry'}"
+            :class="{active: $route.params.category==='jewelry'}"
             to="/catalog/jewelry"
           >FINE JEWELRY</router-link>
         </li>
         <li>
           <router-link
-            :class="{active: $route.params.product_name==='eyewear'}"
+            :class="{active: $route.params.category ==='eyewear'}"
             to="/catalog/eyewear"
           >EYE WEAR</router-link>
         </li>
         <li>
           <router-link
-            :class="{active: $route.params.product_name==='fragrance'}"
+            :class="{active: $route.params.category ==='fragrance'}"
             to="/catalog/fragrance"
           >FRAGRANCE</router-link>
         </li>
         <li>
           <router-link
-            :class="{active: $route.params.product_name==='make-up'}"
+            :class="{active: $route.params.category ==='makeup'}"
             to="/catalog/makeup"
           >MAKEUP</router-link>
         </li>
         <li>
           <router-link
-            :class="{active: $route.params.product_name==='skincare'}"
+            :class="{active: $route.params.category ==='skincare'}"
             to="/catalog/skincare"
           >SKINCARE</router-link>
         </li>
