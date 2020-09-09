@@ -1,35 +1,48 @@
 <template>
-  <div class="catalog">
-    <div v-if="loading === true" id="loading"></div>
-    <Error v-if="error === true" />
-    <div v-else>
-      <Header />
-      <div class="item-container">
-        <div class="items">
-          <div class="item" v-for="(product, index) in products" :key="index">
-            <div class="item__img">
-              <img :src="product.url" :alt="product.product_name" />
+  <div :class="{'loading': loading}">
+    <div v-show="!loading" class="catalog">
+      <Error :errorMessage="errorMsg" v-if="failedToFetch === true" />
+      <div v-else>
+        <Header />
+        <div class="item-container">
+          <div class="items">
+            <div class="item" v-for="(product, index) in products" :key="index">
+              <div class="item__img">
+                <img :src="product.url" :alt="product.product_name" />
+              </div>
+              <div class="item__info">
+                <p class="item__info__name">{{ product.product_name }}</p>
+                <p class="item__info__price">{{ currency + product.price }}</p>
+              </div>
+              <form action="#" class="item__buy">
+                <input type="submit" value="ADD TO CART" class="buy" />
+              </form>
             </div>
-            <div class="item__info">
-              <p class="item__info__name">{{ product.product_name }}</p>
-              <p class="item__info__price">{{ currency + product.price }}</p>
-            </div>
-            <form action="#" class="item__buy">
-              <input type="submit" value="ADD TO CART" class="buy" />
-            </form>
           </div>
         </div>
+        <Footer />
       </div>
-      <Footer />
     </div>
   </div>
 </template>
 
 <script>
+// import axios from "axios";
 import Header from "@/components/Header.vue";
 import Footer from "@/components/Footer.vue";
-import Error from "@/views/Error.vue";
+import Error from "@/components/Error.vue";
 export default {
+  mounted() {
+    let category = this.$route.params.category;
+    let url = `https://fashion-site-server.waynejr.repl.co/${category}`;
+    fetch(url)
+      .then((res) => res.json())
+      .then((jsonData) => this.getProducts(jsonData))
+      .catch((err) =>{ 
+        alert(err)
+        this.loading = false;
+      });
+  },
   components: {
     Header,
     Footer,
@@ -39,8 +52,9 @@ export default {
     return {
       products: null,
       failedToFetch: false,
+      errorMsg: "",
+      category: null,
       loading: true,
-      category: this.$route.params.product_name,
       categories: [
         "fashion",
         "skincare",
@@ -51,39 +65,36 @@ export default {
         "eyewear",
       ],
       currency: "$",
-      error: false,
     };
   },
-  mounted() {
-    this.error = !this.categories.includes(this.category);
-    if (this.error) {
-      document.title = "Page Not Found";
-    }
-    const products = require("../products");
-    if (products) {
-      setTimeout(() => {
-        this.products = products[this.category];
-        this.loading = false;
-      }, 1 * 1000);
-    }
+
+  methods: {
+    getProducts(res) {
+      let products = res;
+      this.products = products;
+      this.loading = false;
+    },
+    displayError(err) {
+      this.error = true;
+      this.errorMsg = err;
+      this.failedToFetch = true;
+    },
   },
 };
 </script>
 
 <style lang="scss">
 // loading gif
-#loading {
-  background: url("https://res.cloudinary.com/tega/image/upload/v1598331654/fashion-site/icons/spinner_v6zkca.gif")
-    no-repeat center center;
-  position: absolute;
-  display: flex;
-  flex-flow: column nowrap;
-  top: 0;
-  left: 0;
+.loading {
+  background: url("../assets/Eclipse-1s-200px.svg") center center no-repeat
+    fixed;
   width: 100%;
   height: 100%;
-  z-index: 9999;
   background-color: #fff;
+  top: 0;
+  left: 0;
+  position: fixed;
+  z-index: 99999;
 }
 
 // catalog pages

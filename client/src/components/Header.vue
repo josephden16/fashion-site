@@ -61,7 +61,7 @@
         <li>
           <router-link
             :class="{active: $route.params.product_name==='make-up'}"
-            to="/catalog/make-up"
+            to="/catalog/makeup"
           >MAKEUP</router-link>
         </li>
         <li>

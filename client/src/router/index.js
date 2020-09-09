@@ -1,80 +1,84 @@
-import Vue from 'vue'
-import VueRouter from 'vue-router'
-import Home from '../views/Home.vue'
+import Vue from "vue";
+import VueRouter from "vue-router";
+import Home from "../views/Home.vue";
 
-Vue.use(VueRouter)
+Vue.use(VueRouter);
 
 const routes = [
   {
-    path: '/',
-    name: 'Home',
+    path: "/",
+    name: "Home",
     component: Home,
-    meta: { title: 'Mariapinto | Home' }
+    meta: { title: "Mariapinto | Home" },
   },
   // redirect when the user visits the following links
   {
-    path: '/home',
-    redirect: '/'
+    path: "/home",
+    redirect: "/",
   },
   {
-    path: '/index',
-    redirect: '/'
+    path: "/index",
+    redirect: "/",
   },
   {
-    path: '/about',
-    name: 'About',
-    meta: { title: 'Mariapinto | About' },
+    path: "/about",
+    name: "About",
+    meta: { title: "Mariapinto | About" },
     // route level code-splitting
     // this generates a separate chunk (about.[hash].js) for this route
     // which is lazy-loaded when the route is visited.
-    component: () => import(/* webpackChunkName: "about" */ '../views/About.vue')
+    component: () =>
+      import(/* webpackChunkName: "about" */ "../views/About.vue"),
   },
   {
-    path: '/account',
-    name: 'Account',
-    meta: { title: 'Mariapinto | Account' },
-    component: () => import('../views/Account.vue')
+    path: "/account",
+    name: "Account",
+    meta: { title: "Mariapinto | Account" },
+    component: () => import("../views/Account.vue"),
   },
   {
-    path: '/catalog/:product_name',
-    name: 'Catalog',
-    meta: { title: 'Mariapinto | Catalog' },
-    component: () => import('../views/Catalog.vue')
+    path: "/catalog/:category",
+    name: "Catalog",
+    meta: { title: "Mariapinto | Catalog" },
+    component: () => import("../views/Catalog.vue"),
   },
   {
-    path: '/fashion',
-    name: 'Fashion',
-    meta: { title: 'Mariapinto | Fashion' },
-    component: () => import('../views/Fashion.vue')
+    path: "/fashion",
+    name: "Fashion",
+    meta: { title: "Mariapinto | Fashion" },
+    component: () => import("../views/Fashion.vue"),
   },
   {
-    path: '/haute_couture',
-    name: 'Haute Couture',
-    meta: { title: 'Mariapinto | Haute Couture' },
-    component: () => import('../views/Haute_Couture.vue')
+    path: "/haute_couture",
+    name: "Haute Couture",
+    meta: { title: "Mariapinto | Haute Couture" },
+    component: () => import("../views/Haute_Couture.vue"),
   },
   {
-    path: '/description',
-    name: 'Description',
-    meta: { title: 'Mariapinto | Description' },
-    component: () => import('../views/Description.vue')
+    path: "/description",
+    name: "Description",
+    meta: { title: "Mariapinto | Description" },
+    component: () => import("../views/Description.vue"),
   },
   {
-    path: '*',
-    name: 'Error',
-    meta: { title: 'Page Not Found' },
-    component: () => import('../views/Error.vue')
-  }
-]
+    path: "*",
+    name: "Error",
+    meta: { title: "Page Not Found" },
+    component: () => import("../views/Error404.vue"),
+  },
+];
 
 const router = new VueRouter({
-  mode: 'history',
+  mode: "history",
   base: process.env.BASE_URL,
-  routes
-})
+  routes,
+  scrollBehavior() {
+    return { x: 0, y: 0 };
+  },
+});
 router.beforeEach((to, from, next) => {
   document.title = to.meta.title;
   next();
 });
 
-export default router
+export default router;
