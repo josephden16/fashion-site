@@ -1,5 +1,5 @@
 <template>
-  <header class="header">
+  <header class="header"> 
     <div class="header__main">
       <div class="header__main__menu">
         <img
@@ -334,6 +334,8 @@ export default {
 
 @media screen and (max-width: 490px) {
   .header {
+    position: sticky;
+    top: 0;
     &__main {
       &__logo {
         margin-top: 0;
