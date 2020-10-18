@@ -20,6 +20,7 @@ import ProductSection from "@/components/ProductSection.vue";
 import Info from "@/components/Info.vue";
 export default {
   name: "Home",
+
   components: {
     Header,
     Footer,

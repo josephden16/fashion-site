@@ -12,11 +12,6 @@
 
 <script>
 export default {
-  data() {
-    return {
-      
-    };
-  },
   props: {
     dataObject: {
       required: true,
